@@ -1,115 +1,110 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Love</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="shortcut icon" href="./icon.png" type="image/x-icon">
-</head>
-<body>
-    <div class="grid"></div>
-
-    <div class="warning"></div>
-
-    <div class="base">
-        <button id="activate">
-            <span></span>
-        </button>
-    </div>
-
-    <div class="box opened" id="cover">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <span></span><span></span>
-    </div>
-
-    <div class="hinges"></div>
-
-    <div class="text">
-        SELF-&thinsp;DESTRUCT
-    </div>
-    
-    <div id="panel2">
-        <div id="msg">YOUR ANSWER IS FALSE</div>
-        <span id="again">AGAIN PLEASE</span>
-    </div>
-
-
-    <div id="panel">
-        <div id="msg">ANSWER NOW</div>
-        <div id="time">9</div>
-        <span id="abort"><a href="index2.html">YES</a></span>
-        <span id="no">NO</span>
-        <span id="detonate">Oc Cho</span>
-    </div>
-
-    <div id="turn-off"></div>
-    <div id="closing"></div>
-
-    <div id="restart"><button id="reload"></button></div>
-
-    <div id="mute"></div>
-
-    <audio id="alarm">
-        <source src="https://josetxu.com/demos/sounds/self-destruct-alarm-count.mp3" type="audio/mpeg">
-    </audio>
-    
-    <script src="main.js"></script>
-
-</body>
-</html>
-=======
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
  <HEAD>
-  <TITLE> I Love You </TITLE>
+  <TITLE> Heart </TITLE>
   <META NAME="Generator" CONTENT="EditPlus">
   <META NAME="Author" CONTENT="">
   <META NAME="Keywords" CONTENT="">
   <META NAME="Description" CONTENT="">
+ 
+    
   <style>
   html, body {
   height: 100%;
   padding: 0;
   margin: 0;
   background: #000;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+
 }
+
+.box {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+}
+
 canvas {
   position: absolute;
   width: 100%;
   height: 100%;
 }
+#pinkboard {
+	position: relative;
+	margin: auto;
+	height: 500px;
+	width: 500px;
+	animation: animate 1.3s infinite;
+}
+
+#pinkboard:before, #pinkboard:after {
+	content: '';
+	position: absolute;
+	background: #FF5CA4;
+	width: 100px;
+	height: 160px;
+	border-top-left-radius: 50px;
+	border-top-right-radius: 50px;
+}
+
+#pinkboard:before {
+	left: 100px;
+	transform: rotate(-45deg);
+	transform-origin: 0 100%;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+							0 10px 10px rgba(0,0,0,0.22);
+}
+
+#pinkboard:after {
+	left: 0;
+	transform: rotate(45deg);
+	transform-origin: 100% 100%;
+}
+
+@keyframes animate {
+	0% {
+		transform: scale(1);
+	}
+	30% {
+		transform: scale(.8);
+	}
+	60% {
+		transform: scale(1.2);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
   </style>
  </HEAD>
-
+ 
  <BODY>
-  <canvas id="pinkboard"></canvas>
+   <div class="box">
+      <canvas id="pinkboard"></canvas>
+   </div>
   <script>
   /*
  * Settings
  */
 var settings = {
   particles: {
-    length:   500, // maximum amount of particles
+    length:   2000, // maximum amount of particles
     duration:   2, // particle duration in sec
     velocity: 100, // particle velocity in pixels/sec
-    effect: -0.75, // play with this for a nice effect
-    size:      30, // particle size in pixels
+    effect: -1.3, // play with this for a nice effect
+    size:      13, // particle size in pixels
   },
 };
-
 /*
  * RequestAnimationFrame polyfill by Erik Möller
  */
 (function(){var b=0;var c=["ms","moz","webkit","o"];for(var a=0;a<c.length&&!window.requestAnimationFrame;++a){window.requestAnimationFrame=window[c[a]+"RequestAnimationFrame"];window.cancelAnimationFrame=window[c[a]+"CancelAnimationFrame"]||window[c[a]+"CancelRequestAnimationFrame"]}if(!window.requestAnimationFrame){window.requestAnimationFrame=function(h,e){var d=new Date().getTime();var f=Math.max(0,16-(d-b));var g=window.setTimeout(function(){h(d+f)},f);b=d+f;return g}}if(!window.cancelAnimationFrame){window.cancelAnimationFrame=function(d){clearTimeout(d)}}}());
-
 /*
  * Point class
  */
@@ -137,7 +132,6 @@ var Point = (function() {
   };
   return Point;
 })();
-
 /*
  * Particle class
  */
@@ -174,7 +168,6 @@ var Particle = (function() {
   };
   return Particle;
 })();
-
 /*
  * ParticlePool class
  */
@@ -237,7 +230,6 @@ var ParticlePool = (function() {
   };
   return ParticlePool;
 })();
-
 /*
  * Putting it all together
  */
@@ -280,7 +272,7 @@ var ParticlePool = (function() {
     }
     context.closePath();
     // create the fill
-    context.fillStyle = '#ea80b0';
+    context.fillStyle = '#FF5CA4';
     context.fill();
     // create the image
     var image = new Image();
@@ -330,4 +322,3 @@ var ParticlePool = (function() {
   </script>
  </BODY>
 </HTML>
->>>>>>> 72ebeb1 (upload source code)
